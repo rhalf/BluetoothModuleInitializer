@@ -4,11 +4,17 @@
 Timer tExecute(Timer::MILLIS), tSerial(Timer::MILLIS);
 SoftwareSerial bluetooth(9, 8);   // RX | TX
 
-//uncomment if it for SulitPowerCharge or SulitPowerWash
+//uncomment if it is 
+// SulitPisoCharge - SPC001
+// SulitPisoMultipurpose - SPM001
+// SulitPisoWifi - SPW001
+
 String bluetoothName = "SPC001";
+//String bluetoothName = "SPM001";
 //String bluetoothName = "SPW001";
+
 //default pin
-String bluetoothPin = "1234";
+String bluetoothPin = "0000";
 String bluetoothUart = "9600,0,0";
 
 uint32_t runTime = 0;
@@ -20,16 +26,13 @@ void cbExecute() {
   if (runTime == 2) print("AT+ADDR\r\n");
   if (runTime == 3) print("AT+ROLE\r\n");
 
-  if (runTime == 5) print("AT+NAME:" + bluetoothName + "\r\n");
-  if (runTime == 6) print("AT+NAME\r\n");
+  if (runTime == 6) print("AT+NAME:" + bluetoothName + "\r\n");
   if (runTime == 7) print("AT+PSWD:\"" + bluetoothPin + "\"\r\n");
-  if (runTime == 8) print("AT+PSWD\r\n");
-  if (runTime == 9) print("AT+UART=" + bluetoothUart +"\r\n");
+  if (runTime == 8) print("AT+UART=" + bluetoothUart +"\r\n");
   
-  if (runTime == 11) print("AT+NAME\r\n");
-  if (runTime == 12) print("AT+PSWD\r\n");
-  if (runTime == 13) print("AT+UART\r\n");
-
+  if (runTime == 12) print("AT+NAME\r\n");
+  if (runTime == 13) print("AT+PSWD\r\n");
+  if (runTime == 14) print("AT+UART\r\n");
 
   //Return the default settings
   //AT+RESET : Reset and exit AT mode
