@@ -21,18 +21,21 @@ uint32_t runTime = 0;
 
 void cbExecute() {
   runTime++;
-
-  if (runTime == 1) print("AT+VERSION\r\n");
-  if (runTime == 2) print("AT+ADDR\r\n");
-  if (runTime == 3) print("AT+ROLE\r\n");
-
-  if (runTime == 6) print("AT+NAME:" + bluetoothName + "\r\n");
-  if (runTime == 7) print("AT+PSWD:\"" + bluetoothPin + "\"\r\n");
-  if (runTime == 8) print("AT+UART=" + bluetoothUart +"\r\n");
+  if (runTime == 1) print("AT\r\n");
   
-  if (runTime == 12) print("AT+NAME\r\n");
-  if (runTime == 13) print("AT+PSWD\r\n");
-  if (runTime == 14) print("AT+UART\r\n");
+//  if (runTime == 3) print("AT+VERSION\r\n");
+//  if (runTime == 4) print("AT+ADDR\r\n");
+//  if (runTime == 6) print("AT+ROLE\r\n");
+//
+//  if (runTime == 8) print("AT+NAME:" + bluetoothName + "\r\n");
+//  if (runTime == 9) print("AT+PSWD:\"" + bluetoothPin + "\"\r\n");
+//  if (runTime == 10) print("AT+UART=" + bluetoothUart +"\r\n");
+//  
+//  if (runTime == 12) print("AT+NAME\r\n");
+//  if (runTime == 13) print("AT+PSWD\r\n");
+//  if (runTime == 14) print("AT+UART\r\n");
+
+  if (runTime == 16) print("DONE");
 
   //Return the default settings
   //AT+RESET : Reset and exit AT mode
@@ -66,8 +69,8 @@ void setup() {
   Serial.println("A.R.T.S Bluetooth Module Initializer");
   Serial.println("created by: Rhalf Wendel Caacbay");
 
-  tExecute.begin(Timer::FOREVER, 500, cbExecute);
-  tSerial.begin(Timer::FOREVER, 10, cbSerial);
+  tExecute.begin(Timer::FOREVER, 1000, cbExecute);
+  tSerial.begin(Timer::FOREVER, 1, cbSerial);
 
   tExecute.start();
   tSerial.start();
